@@ -1,0 +1,41 @@
+---
+openapi: 3.0.0
+info:
+  version: 1.2.0
+  title: Onboarding API
+  description: STD22054
+servers:
+  - url: http://std22054.com
+paths:
+  /students:
+    get:
+      summary: Get students
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: 1
+                name: Rakoto
+                birthdate: 2000-01-01
+    post:
+      summary: Create a new student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              name: NewStudentName
+              birthdate: 2005-05-05
+              port: 8080
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: 2
+                name: NewStudentName
+                birthdate: 2005-05-05
+                port: 8080
