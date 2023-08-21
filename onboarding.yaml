@@ -33,9 +33,6 @@ paths:
           application/json: 
             schema: 
                 $ref: '#/components/schemas/Student'
-          application/xml:
-            schema: 
-                 $href: '#/components/schemas/Student'
       required:  true
     responses:
       '200':
@@ -44,9 +41,6 @@ paths:
          application/json: 
             schema: 
                 $ref: '#/components/schemas/Student'
-          application/xml:
-            schema: 
-                 $href: '#/components/schemas/Student'
        '400':
           description : Invalid ID supplied
         '404':
@@ -65,9 +59,6 @@ paths:
          application/json: 
             schema: 
                 $ref: '#/components/schemas/Student'
-          application/xml:
-            schema: 
-                 $href: '#/components/schemas/Student'
        '400':
           description : Invalid ID supplied
   post: 
@@ -81,9 +72,6 @@ paths:
          application/json: 
             schema: 
                 $ref: '#/components/schemas/Student'
-          application/xml:
-            schema: 
-                 $href: '#/components/schemas/Student'
       required : true 
     responses:
       '200':
@@ -92,9 +80,6 @@ paths:
          application/json: 
             schema: 
                 $ref: '#/components/schemas/Student'
-          application/xml:
-            schema: 
-                 $href: '#/components/schemas/Student'
         '405':
           description: Invalid input
  /teacher: 
@@ -126,9 +111,6 @@ post:
          application/json: 
             schema: 
                 $ref: '#/components/schemas/Teacher'
-          application/xml:
-            schema: 
-                 $href: '#/components/schemas/Teacher'
       required : true 
     responses:
       '200':
@@ -137,9 +119,6 @@ post:
          application/json: 
             schema: 
                 $ref: '#/components/schemas/Student'
-          application/xml:
-            schema: 
-                 $href: '#/components/schemas/Student'
         '405':
           description: Inavalid input    
 components:
