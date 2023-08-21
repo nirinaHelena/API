@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   version: 1.2.0
-  title: Onboarding API
+  title: teacher API
   description: STD22054
 servers:
   - url: http://STD2254.com
