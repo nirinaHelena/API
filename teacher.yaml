@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  version: 1.2.0
+  title: Onboarding API
+  description: STD22054
+servers:
+  - url: http://STD2254.com
+paths:
+  /teachers:
+    get:
+      summary: Get Teachers
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                - nom: John
+                  prenom: Doe
+                  cours:
+                    - nom: algorithme
+                      code: prog
+                      duree: 120h
+    post:
+      summary: Create a new teacher
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              nom: NewTeacherLastName
+              prenom: NewTeacherFirstName
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: 1
+                nom: NewTeacherLastName
+                prenom: NewTeacherFirstName
+    put:
+      summary: Update teacher details
+      responses:
+        '200':
+          description: Successful response
+    delete:
+      summary: Delete a teacher
+      responses:
+        '200':
+          description: Successful response
