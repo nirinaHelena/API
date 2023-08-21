@@ -1,126 +1,127 @@
 openapi: 3.0.3
 info:
   title: OnboardingAPI 
-  description : Learning how to describe an API
+  description: Learning how to describe an API
   version: 1.2.0
 servers:
   - url: https://STD22054.com
     description: STD server
 paths:
   /student: 
-     get: 
-        description: get detail of the student 
-        responses: 
-          "200":
-            description: Have all the details of the student 
-            content: 
-              application/json:
-                schema:
-                  $ref: "#/components/schemas/Student"
-                examples:
-                  example1:
-                    value:
-                       - id: 1
-                         name: Nirina 
-                         birthdate: "2006-01-06"
-  put: 
-     tags:
-      - default
-      summary: Uptade a student 
+    get: 
+      description: Get details of a student 
+      responses: 
+        "200":
+          description: Successful response with student details 
+          content: 
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Student"
+              examples:
+                example1:
+                  value:
+                    - id: 1
+                      name: Nirina 
+                      birthdate: "2006-01-06"
+  /student/{id}: 
+    put:
+      tags:
+        - default
+      summary: Update a student 
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID of the student to update
       requestBody: 
-        description : Update a student in school
-        content : 
+        description: Update a student in school
+        content: 
           application/json: 
             schema: 
-                $ref: '#/components/schemas/Student'
-      required:  true
-    responses:
-      '200':
-        description: Successful 
-        content:
-         application/json: 
-            schema: 
-                $ref: '#/components/schemas/Student'
-       '400':
-          description : Invalid ID supplied
+              $ref: '#/components/schemas/Student'
+        required: true
+      responses:
+        '200':
+          description: Successful response with updated student details
+        '400':
+          description: Invalid ID supplied
         '404':
-          description : Student not found  
-  delete: 
-     tags:
-      - default
+          description: Student not found  
+    delete: 
+      tags:
+        - default
       summary: Delete a student 
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID of the student to delete
       requestBody: 
-        description : Delete a student in school
-      required:  true
-    responses:
-      '200':
-        description: Successful 
-        content:
-         application/json: 
-            schema: 
-                $ref: '#/components/schemas/Student'
-       '400':
-          description : Invalid ID supplied
-  post: 
-     tags:
-      - default
-      summary: Add a new  student 
+        description: Delete a student in school
+        required: true
+      responses:
+        '200':
+          description: Successful response upon successful deletion
+        '400':
+          description: Invalid ID supplied
+  /student: 
+    post: 
+      tags:
+        - default
+      summary: Add a new student 
       requestBody: 
-        description : Adding a student in school
-      required:  true
-      content:
-         application/json: 
-            schema: 
-                $ref: '#/components/schemas/Student'
-      required : true 
-    responses:
-      '200':
-        description: Successful 
+        description: Adding a student in school
+        required: true
         content:
-         application/json: 
+          application/json: 
             schema: 
-                $ref: '#/components/schemas/Student'
+              $ref: '#/components/schemas/Student'
+      responses:
+        '200':
+          description: Successful response with added student details
         '405':
           description: Invalid input
- /teacher: 
-     get: 
-        description: get detail of the teacher 
-        responses: 
-          "200":
-            description: Have all the details of the teacher 
-            content: 
-              application/json:
-                schema:
-                  $ref: "#/components/schemas/Teacher"
-                examples:
-                  example1:
-                    value:
-                       - id: 1
-                         name: Toky
-                         courseName:  algorithme
-                         courseCode: prog1
-                      courseDuration : 2 
-post: 
-     tags:
-      - default
-      summary: Add a new  teacher 
+
+  /teacher: 
+    get: 
+      description: Get details of the teacher 
+      responses: 
+        "200":
+          description: Successful response with teacher details 
+          content: 
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Teacher"
+              examples:
+                example1:
+                  value:
+                    - id: 1
+                      name: Toky
+                      course:
+                        - courseName: algorithme
+                          courseCode: prog1
+                          courseDuration: 2
+    post: 
+      tags:
+        - default
+      summary: Add a new teacher 
       requestBody: 
-        description : Adding a teacher  in school
-      required:  true
-      content:
-         application/json: 
-            schema: 
-                $ref: '#/components/schemas/Teacher'
-      required : true 
-    responses:
-      '200':
-        description: Successful 
+        description: Adding a teacher in school
+        required: true
         content:
-         application/json: 
+          application/json: 
             schema: 
-                $ref: '#/components/schemas/Student'
+              $ref: '#/components/schemas/Teacher'
+      responses:
+        '200':
+          description: Successful response with added teacher details
         '405':
-          description: Inavalid input    
+          description: Invalid input
+
 components:
   schemas:
     Student:
@@ -133,7 +134,7 @@ components:
         birthdate:
           type: string
     Teacher: 
-      type : object
+      type: object
       properties:
         id:
           type: integer 
@@ -142,22 +143,14 @@ components:
         course:
           type: array 
           items:
-            types: object 
+            type: object 
             properties: 
               courseName: 
                 type: string
-                example : Web2 
+                example: Web2 
               courseCode: 
                 type: string
                 example: REACT
               courseDuration : 
-                type : integer
+                type: integer
                 example: 2
-
-
-
-  
-  
-
-  
-  
